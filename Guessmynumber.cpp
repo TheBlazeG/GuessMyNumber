@@ -1,19 +1,37 @@
-// Guessmynumber.cpp : Este archivo contiene la función "main". La ejecución del programa comienza y termina ahí.
-//
-
 #include <iostream>
+#include<cstdlib> //Trabaja con números random
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+    srand(static_cast<unsigned int>(time(0)));
+    //srand(time(NULL));
+    int randomNumber = rand();
+    int secretNumber = (randomNumber % 200) + 1;
+    int guess;
+    int tries = 0;
+
+    cout << "GUESS MY NUMBER" << endl;
+    cout << "Adivina el número en el menor número de intentos posible." << endl;
+
+    //Depurar
+    cout << secretNumber;
+    do
+    {
+        cout << "\nEnter a guess (1-200):" << endl;
+        cin >> guess;
+        tries++;
+
+        if (guess > secretNumber) {
+            cout << "Muy Alto\n\n";
+        }
+        else if (guess < secretNumber) {
+            cout << "Muy Bajo\n\n";
+        }
+        else {
+            cout << "Excelente lo hiciste en -- " << tries << "-- intentos";
+
+        }
+    } while (guess != secretNumber);
 }
-
-// Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
-// Depurar programa: F5 o menú Depurar > Iniciar depuración
-
-// Sugerencias para primeros pasos: 1. Use la ventana del Explorador de soluciones para agregar y administrar archivos
-//   2. Use la ventana de Team Explorer para conectar con el control de código fuente
-//   3. Use la ventana de salida para ver la salida de compilación y otros mensajes
-//   4. Use la ventana Lista de errores para ver los errores
-//   5. Vaya a Proyecto > Agregar nuevo elemento para crear nuevos archivos de código, o a Proyecto > Agregar elemento existente para agregar archivos de código existentes al proyecto
-//   6. En el futuro, para volver a abrir este proyecto, vaya a Archivo > Abrir > Proyecto y seleccione el archivo .sln
